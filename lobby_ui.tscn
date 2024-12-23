@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfq610i2ole4b"]
+
+[ext_resource type="Script" path="res://lobby_ui.gd" id="1_yscn7"]
+[ext_resource type="PackedScene" uid="uid://diilrq7w6606l" path="res://lobby_ui_2d.tscn" id="2_gw3bh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pw0nh"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Lobby_UI" type="Node3D"]
+script = ExtResource("1_yscn7")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_pw0nh")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+size = Vector2i(1920, 1080)
+
+[node name="VBoxContainer" parent="Sprite3D/SubViewport" instance=ExtResource("2_gw3bh")]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://diilrq7w6606l"]
+
+[ext_resource type="Script" path="res://lobby_ui.gd" id="1_dbqf3"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbqf3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "WELCOMEN !!!"
+horizontal_alignment = 1
+
+[node name="Create Game" type="Button" parent="."]
+layout_mode = 2
+text = "Create Game"
+
+[node name="Join Game" type="Button" parent="."]
+layout_mode = 2
+text = "Join Game"
+
+[connection signal="pressed" from="Create Game" to="." method="_on_create_game_pressed"]
+[connection signal="pressed" from="Join Game" to="." method="_on_join_game_pressed"]
