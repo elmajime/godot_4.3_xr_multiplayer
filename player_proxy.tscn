@@ -1,24 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv5t7pbqfyxyp"]
+[gd_scene load_steps=5 format=3 uid="uid://cv5t7pbqfyxyp"]
 
 [ext_resource type="Script" path="res://player_proxy.gd" id="1_s13vu"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_u3fpg"]
+[sub_resource type="SphereMesh" id="SphereMesh_urra6"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_ygnqd"]
+[sub_resource type="SphereMesh" id="SphereMesh_dfqkd"]
 radius = 0.2
 height = 0.4
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o7kut"]
+properties/0/path = NodePath("Head:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Head:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("LeftHand:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("LeftHand:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("LeftHand:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("RightHand:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("RightHand:rotation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("RightHand:scale")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [node name="Player_proxy" type="Node3D"]
 script = ExtResource("1_s13vu")
 
 [node name="Head" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693827, 0)
-mesh = SubResource("SphereMesh_u3fpg")
+mesh = SubResource("SphereMesh_urra6")
 
-[node name="LeftHand" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883857, -0.86996, 0)
-mesh = SubResource("SphereMesh_ygnqd")
+[node name="LeftHand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06991, -0.859373, 0)
+mesh = SubResource("SphereMesh_dfqkd")
+skeleton = NodePath("../Head")
 
-[node name="RightHand" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.631395, -0.86996, 0)
-mesh = SubResource("SphereMesh_ygnqd")
+[node name="RightHand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.681027, -0.859373, 0)
+mesh = SubResource("SphereMesh_dfqkd")
+skeleton = NodePath("../Head")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o7kut")

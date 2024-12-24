@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crixnognel3u2"]
+[gd_scene load_steps=7 format=3 uid="uid://crixnognel3u2"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_hbgcr"]
 [ext_resource type="Script" path="res://level1.gd" id="2_wrhno"]
@@ -15,8 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_ectjo")
 [sub_resource type="Environment" id="Environment_3sh55"]
 background_mode = 2
 sky = SubResource("Sky_awdmm")
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vycor"]
 
 [node name="Game" instance=ExtResource("1_hbgcr")]
 script = ExtResource("2_wrhno")
@@ -39,7 +37,3 @@ environment = SubResource("Environment_3sh55")
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="." index="5"]
 environment = SubResource("Environment_3sh55")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="6"]
-root_path = NodePath("../MultiplayerSpawner")
-replication_config = SubResource("SceneReplicationConfig_vycor")
