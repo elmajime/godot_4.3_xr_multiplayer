@@ -9,7 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Lobby.players.size() > 1:
+		$Start.disabled = false
 
 
 func player_connected(peer_id, player_info):
@@ -28,3 +29,8 @@ func _on_create_game_pressed() -> void:
 
 func _on_join_game_pressed() -> void:
 	Lobby.join_game()
+
+
+func _on_start_pressed() -> void:
+	Lobby.load_game.rpc("res://level1.tscn")
+	#get_tree().change_scene_to_file("res://level1.tscn")

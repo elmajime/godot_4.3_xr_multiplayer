@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crixnognel3u2"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_hbgcr"]
-[ext_resource type="Script" path="res://game.gd" id="2_873ne"]
+[ext_resource type="Script" path="res://level1.gd" id="2_wrhno"]
 
-[node name="SceneBase" instance=ExtResource("1_hbgcr")]
-
-[node name="Game" type="Node" parent="." index="1"]
-script = ExtResource("2_873ne")
+[node name="Game" instance=ExtResource("1_hbgcr")]
+script = ExtResource("2_wrhno")
