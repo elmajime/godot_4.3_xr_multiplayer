@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv5t7pbqfyxyp"]
+
+[ext_resource type="Script" path="res://player_proxy.gd" id="1_s13vu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u3fpg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ygnqd"]
+radius = 0.2
+height = 0.4
+
+[node name="Player_proxy" type="Node3D"]
+script = ExtResource("1_s13vu")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693827, 0)
+mesh = SubResource("SphereMesh_u3fpg")
+
+[node name="LeftHand" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883857, -0.86996, 0)
+mesh = SubResource("SphereMesh_ygnqd")
+
+[node name="RightHand" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.631395, -0.86996, 0)
+mesh = SubResource("SphereMesh_ygnqd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bid6rpad0dcpt"]
+[gd_scene load_steps=9 format=3 uid="uid://bid6rpad0dcpt"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_hbgcr"]
 [ext_resource type="Script" path="res://lobby_scene.gd" id="2_bayj2"]
@@ -6,50 +6,30 @@
 [ext_resource type="PackedScene" uid="uid://diilrq7w6606l" path="res://lobby_ui_2d.tscn" id="5_de060"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_qi0vx"]
 
-[sub_resource type="GDScript" id="GDScript_8h0mn"]
-script/source = "extends Node # Or Node2D.
-
-# Called only on the server.
-func start_game():
-	print(\"game start_game\")
-	# All peers are ready to receive RPCs in this scene.
-
-
-func _on_lobby_ui_create_game() -> void:
-	Lobby.create_game()
-
-
-func _on_lobby_ui_join_game() -> void:
-	Lobby.join_game() # arg is empty -> default hardcoded adress is used
-"
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cwawk"]
 sky_top_color = Color(0.214811, 0.326466, 0.547276, 1)
 sky_horizon_color = Color(0.743806, 0.625533, 0.586084, 1)
 ground_horizon_color = Color(0.600384, 0.687526, 0.548965, 1)
 
-[sub_resource type="Sky" id="Sky_awdmm"]
+[sub_resource type="Sky" id="Sky_53c5m"]
 sky_material = SubResource("ProceduralSkyMaterial_cwawk")
 
 [sub_resource type="Environment" id="Environment_8ym4q"]
 background_mode = 2
-sky = SubResource("Sky_awdmm")
+sky = SubResource("Sky_53c5m")
 
 [node name="SceneBase" instance=ExtResource("1_hbgcr")]
 script = ExtResource("2_bayj2")
-
-[node name="Game" type="Node" parent="." index="0"]
-script = SubResource("GDScript_8h0mn")
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("4_4tau4")]
 show_laser = 2
 laser_length = 1
 show_target = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 environment = SubResource("Environment_8ym4q")
 
-[node name="Lobby_UI_2d_to_3d" parent="." index="3" instance=ExtResource("5_qi0vx")]
+[node name="Lobby_UI_2d_to_3d" parent="." index="2" instance=ExtResource("5_qi0vx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1392, -2.48978)
 scene = ExtResource("5_de060")
 scene_properties_keys = PackedStringArray("lobby_ui.gd")
