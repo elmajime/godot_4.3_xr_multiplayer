@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bid6rpad0dcpt"]
+[gd_scene load_steps=12 format=3 uid="uid://bid6rpad0dcpt"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_hbgcr"]
 [ext_resource type="Script" path="res://lobby_scene.gd" id="2_bayj2"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_4tau4"]
+[ext_resource type="PackedScene" uid="uid://dhaqth6q5yw4n" path="res://addons/godot-xr-tools/hands/model/hand_l.gltf" id="4_x1nxk"]
 [ext_resource type="PackedScene" uid="uid://diilrq7w6606l" path="res://lobby_ui_2d.tscn" id="5_de060"]
+[ext_resource type="PackedScene" uid="uid://ds1t8vc0kxoeo" path="res://addons/godot-xr-tools/hands/model/hand_r.gltf" id="5_do08m"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_qi0vx"]
+[ext_resource type="PackedScene" uid="uid://lauwp8okd1vh" path="res://addons/godot-xr-tools/objects/keyboard/virtual_keyboard_2d.tscn" id="6_i1s6i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cwawk"]
 sky_top_color = Color(0.214811, 0.326466, 0.547276, 1)
@@ -18,18 +21,40 @@ sky_material = SubResource("ProceduralSkyMaterial_cwawk")
 background_mode = 2
 sky = SubResource("Sky_53c5m")
 
-[node name="SceneBase" instance=ExtResource("1_hbgcr")]
+[node name="LobbyScene" instance=ExtResource("1_hbgcr")]
 script = ExtResource("2_bayj2")
 
+[node name="LeftHand" parent="XROrigin3D" index="1"]
+pose = &"default"
+
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("4_4tau4")]
+enabled = false
 show_laser = 2
 laser_length = 1
 show_target = true
+
+[node name="hand_l" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("4_x1nxk")]
+
+[node name="FunctionPointer2" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("4_4tau4")]
+show_laser = 2
+laser_length = 1
+show_target = true
+
+[node name="hand_r" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("5_do08m")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 environment = SubResource("Environment_8ym4q")
 
 [node name="Lobby_UI_2d_to_3d" parent="." index="2" instance=ExtResource("5_qi0vx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1392, -2.48978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1392, -2.28084)
 scene = ExtResource("5_de060")
-scene_properties_keys = PackedStringArray("lobby_ui.gd")
+viewport_size = Vector2(1080, 920)
+scene_properties_keys = PackedStringArray("lobby_ui.gd", "address")
+address = "127.0.0.1"
+
+[node name="Keyboard" parent="." index="3" instance=ExtResource("5_qi0vx")]
+transform = Transform3D(1, 0, 0, 0, 0.803753, 0.594963, 0, -0.594963, 0.803753, 0.0251384, -0.0354449, -1.68231)
+visible = false
+scene = ExtResource("6_i1s6i")
+viewport_size = Vector2(400, 300)
+scene_properties_keys = PackedStringArray("virtual_keyboard_2d.gd")

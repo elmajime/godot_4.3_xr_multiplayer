@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwlxfwi3krsaf"]
+
+[ext_resource type="Script" path="res://server_info.gd" id="1_igfn8"]
+
+[node name="ServerInfo" type="HBoxContainer"]
+script = ExtResource("1_igfn8")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Title"
+
+[node name="IP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "192.168.1.1"
+
+[node name="PlayerCount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

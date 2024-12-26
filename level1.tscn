@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://crixnognel3u2"]
+[gd_scene load_steps=8 format=3 uid="uid://crixnognel3u2"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_hbgcr"]
 [ext_resource type="Script" path="res://level1.gd" id="2_wrhno"]
 [ext_resource type="PackedScene" uid="uid://cv5t7pbqfyxyp" path="res://player_proxy.tscn" id="3_lhwwy"]
+[ext_resource type="PackedScene" uid="uid://deetywtod5c66" path="res://collines.blend" id="4_2mgbn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ectjo"]
 sky_top_color = Color(0.214811, 0.326466, 0.547276, 1)
@@ -37,3 +38,9 @@ environment = SubResource("Environment_3sh55")
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="." index="5"]
 environment = SubResource("Environment_3sh55")
+
+[node name="collines" parent="." index="6" instance=ExtResource("4_2mgbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74606, 0, 1.79592)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 0.984233, 0.176879, 0, -0.176879, 0.984233, 0, 3.39196, 0)
