@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv5t7pbqfyxyp"]
+[gd_scene load_steps=6 format=3 uid="uid://cv5t7pbqfyxyp"]
 
 [ext_resource type="Script" path="res://player_proxy.gd" id="1_s13vu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_urra6"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_p5571"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dfqkd"]
 radius = 0.2
@@ -42,6 +44,10 @@ script = ExtResource("1_s13vu")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_urra6")
+
+[node name="Nose" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.368294, 0, 0, 0, -0.00454445, -0.368266, 0, 0.368266, -0.00454445, 0, 0, 0.536221)
+mesh = SubResource("PrismMesh_p5571")
 
 [node name="LeftHand" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06991, -0.859373, 0)

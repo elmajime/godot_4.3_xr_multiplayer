@@ -12,10 +12,16 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var material = preload("res://player_proxy.tres")
 	if xr_origin_node:
 		xr_head = xr_origin_node.get_node("XRCamera3D")
 		xr_left_hand = xr_origin_node.get_node("LeftHand")
 		xr_right_hand = xr_origin_node.get_node("RightHand")
+		
+		$Head.material_override = material.duplicate()
+	else:
+		$Head.material_override = material.duplicate()
+		$Head.material_override.albedo_color = Color(0, 0, 1, 1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
