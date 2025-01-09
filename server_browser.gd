@@ -9,7 +9,7 @@ signal join_game(ip)
 
 @export var listen_port = 7002
 @export var broadcast_port = 7001
-@export var broadcast_address = "192.168.1.255"
+@export var broadcast_address = "192.168.0.255"
 @export var server_info: PackedScene
 
 var RoomInfo = {"name":"name", "player_count":0}

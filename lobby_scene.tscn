@@ -49,6 +49,7 @@ environment = SubResource("Environment_8ym4q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1392, -2.28084)
 scene = ExtResource("5_de060")
 viewport_size = Vector2(1080, 920)
+unshaded = true
 scene_properties_keys = PackedStringArray("lobby_ui.gd", "address")
 address = "127.0.0.1"
 
